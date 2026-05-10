@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Deny-all default. Per-collection rules will be added in Phases 2–5
+    // (read-only pitstops in Phase 2, authed writes in Phase 4, etc.).
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
